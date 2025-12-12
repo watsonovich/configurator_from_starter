@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
+}
+
+.configurator {
+  position: fixed;
+  right: 24px;
+  width: 320px;
+  bottom: 25vh;
+  color: rgb(31, 26, 49);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.configurator__section__title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.configurator__section__options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.option__item__label {
+  font-size: 12px;
+  color: #838080;
+  transition: 0.4s color;
+}
+
+.option__item {
+  transition: 0.4s opacity;
+}
+
+.option__item:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.option__item.item--active .option__item__label {
+  color: white;
+  font-weight: bold;
+  padding: 0px 4px;
+  background-color: rgb(31, 26, 49);
+  border: 2px solid rgb(31, 26, 49);
+  border-radius: 4px;
+}
