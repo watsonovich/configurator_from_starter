@@ -15,12 +15,5 @@ export function TubeAlt(props) {
 
   // console.log(props.material);
 
-  return (
-    <Base
-      geometry={activeGeometry}
-      scale-z={bodyLength}
-      material={props.material}
-      castShadow
-    />
-  );
+  return <Base geometry={activeGeometry} scale-z={bodyLength} />;
 }

@@ -118,28 +118,33 @@ const ExperienceAlt = () => {
   const testMaterial = new THREE.MeshStandardMaterial({
     color: "dodgerBlue",
     metalness: 0,
-    roughness: 0,
+    roughness: 1,
     transparent: true,
-    opacity: 0.65,
+    opacity: 0.5,
+    side: THREE.DoubleSide,
   });
 
-  testMaterial.side = THREE.DoubleSide;
+  const simulatedAluminum = new THREE.MeshStandardMaterial({
+    color: "gainsboro",
+    metalness: 0.6,
+    roughness: 0.2,
+  });
 
   return (
-    <mesh castShadow receiveShadow>
+    <mesh material={simulatedAluminum} castShadow>
       <Geometry ref={csg} useGroups>
-        <TubeAlt bore={profile} stroke={tubeLength} material={testMaterial} />
+        <TubeAlt bore={profile} stroke={tubeLength} />
         <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
           <Subtraction
-            // showOperation
+            showOperation
             position={rodPort}
             geometry={cutterGeometry}
             material={testMaterial}
           />
 
-          <Subtraction position={headPort} showOperation={false}>
+          <Subtraction position={headPort} showOperation={true}>
             <cylinderGeometry args={[0.008, 0.008, 0.024, 16, 2, false]} />
-            <meshStandardMaterial color={"orange"} side={THREE.DoubleSide} />
+            <meshStandardMaterial color={"orange"} transparent opacity={0.7} />
           </Subtraction>
 
           <PortCutterAlt position={rodPort} />
