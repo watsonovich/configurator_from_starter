@@ -7,10 +7,15 @@ export default function StrokeChamber() {
   const { stroke, setStroke } = useCustomization();
 
   const rad = bore / 1000 / 2;
-  const length = (stroke + 5) / 1000;
+  const cutterShift = 2;
+  const length = (stroke + 5 + cutterShift) / 1000;
 
   return (
-    <Subtraction rotation={[Math.PI / 2, 0, 0]}>
+    <Subtraction
+      showOperation={false}
+      rotation-x={Math.PI / 2}
+      position-z={cutterShift / 2 / 1000}
+    >
       <cylinderGeometry args={[rad, rad, length, 32, 1]} />
     </Subtraction>
   );
