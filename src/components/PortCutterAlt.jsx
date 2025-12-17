@@ -8,15 +8,14 @@ export function PortCutterAlt(props) {
   // console.log(nodes["RC_cutter001"]);
   // console.log(materials);
 
-  const cutterGeometry = nodes["RC_cutter001"].geometry;
+  const cutterGeometry = nodes["cutter01"].geometry;
   const cutterMat = materials.ALUMINUM;
 
   return (
     <Subtraction
-      showOperation
+      showOperation={false}
       position={props.position}
       geometry={cutterGeometry}
-      material={cutterMat}
     />
   );
 }

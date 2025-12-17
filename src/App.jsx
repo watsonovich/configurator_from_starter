@@ -7,8 +7,6 @@ import { OrbitControls } from "@react-three/drei";
 import Experience from "./components/Experience";
 import ExperienceAlt from "./components/ExperienceAlt";
 
-const offset = [-0.07, 0, 0];
-
 function App() {
   return (
     <CustomizationProvider>
@@ -19,15 +17,14 @@ function App() {
             makeDefault
             enablePan={false}
             maxPolarAngle={Math.PI / 2}
-            minAzimuthAngle={-Math.PI / 1.25}
-            maxAzimuthAngle={Math.PI / 2}
+            // minAzimuthAngle={-Math.PI / 1.25}
+            // maxAzimuthAngle={Math.PI / 2}
             minDistance={0.12}
             maxDistance={0.9}
             rotateSpeed={1.5}
           />
 
-          <Experience position={offset} />
-          <ExperienceAlt />
+          <Experience />
           <Environment />
         </Canvas>
         <Configurator />

@@ -103,6 +103,8 @@ export const tubeDimsCQ2 = {
       portAngleMod: 0,
       portSize: "1/8",
       portSizeMod: "M5x0.8",
+      rodDiameter: 16,
+      coreDiameter: 33.4,
     },
     40: {
       basicLength: 29.5,

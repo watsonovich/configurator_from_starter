@@ -5,7 +5,7 @@ import { useCustomization } from "../contexts/Customization";
 import { tubeDimsCQ2 } from "../data/dims";
 import { Port } from "./Port";
 import { PortCutterAlt } from "./PortCutterAlt";
-import { Base, Geometry, Subtraction } from "@react-three/csg";
+import { Geometry } from "@react-three/csg";
 import { useRef } from "react";
 
 const ExperienceAlt = () => {
@@ -128,6 +128,8 @@ const ExperienceAlt = () => {
     color: "gainsboro",
     metalness: 0.6,
     roughness: 0.2,
+    transparent: false,
+    opacity: 0.6,
   });
 
   return (
@@ -135,19 +137,9 @@ const ExperienceAlt = () => {
       <Geometry ref={csg} useGroups>
         <TubeAlt bore={profile} stroke={tubeLength} />
         <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
-          <Subtraction
-            showOperation
-            position={rodPort}
-            geometry={cutterGeometry}
-            material={testMaterial}
-          />
-
-          <Subtraction position={headPort} showOperation={true}>
-            <cylinderGeometry args={[0.008, 0.008, 0.024, 16, 2, false]} />
-            <meshStandardMaterial color={"orange"} transparent opacity={0.7} />
-          </Subtraction>
-
           <PortCutterAlt position={rodPort} />
+        </group>
+        <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
           <PortCutterAlt position={headPort} />
         </group>
       </Geometry>
