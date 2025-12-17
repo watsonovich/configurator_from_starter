@@ -11,6 +11,8 @@ import { useRef } from "react";
 import CoreRemoval from "./CoreRemoval";
 import StrokeChamber from "./StrokeChamber";
 import RodCore from "./RodCore";
+import RodCoreGroove from "./RodCoreGroove";
+import PortNew from "./PortNew";
 
 const Experience = () => {
   const csg = useRef();
@@ -154,8 +156,10 @@ const Experience = () => {
       <mesh castShadow material={myAluminum}>
         <Geometry ref={csg} useGroups>
           <Tube profile={profile} tubeLength={tubeLength} />
+          <PortNew locationRef={portSurfaceDistance} />
           <StrokeChamber />
           <RodCore tubeLength={tubeLength} />
+          <RodCoreGroove tubeLength={tubeLength} />
           <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
             <PortCutter position={rodPort} size={portSize} />
           </group>
