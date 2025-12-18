@@ -2,8 +2,8 @@ import { Canvas, useThree } from "@react-three/fiber";
 import "./App.css";
 import Configurator from "./components/Configurator";
 import { CustomizationProvider } from "./contexts/Customization";
-import { Environment } from "./components/Environment";
-import { OrbitControls } from "@react-three/drei";
+// import { Environment } from "./components/Environment";
+import { Environment, OrbitControls } from "@react-three/drei";
 import Experience from "./components/Experience";
 import ExperienceAlt from "./components/ExperienceAlt";
 
@@ -25,7 +25,7 @@ function App() {
           />
 
           <Experience />
-          <Environment />
+          <Environment preset="city" background blur={1} />
         </Canvas>
         <Configurator />
       </div>
