@@ -20,7 +20,6 @@ const Experience = () => {
   const { stroke, setStroke } = useCustomization();
 
   const selection = tubeDimsCQ2.bores[bore];
-  console.log(selection);
 
   const basicLength = selection.basicLength;
   const basicLengthMod = selection.basicLengthMod;
@@ -108,26 +107,26 @@ const Experience = () => {
 
   const profile = bore + profileModifier;
 
-  console.log(
-    "BORE",
-    bore,
-    // "PROFILE",
-    // profile,
-    "STROKE",
-    stroke,
-    "TUBE LENGTH",
-    tubeLength,
-    // "BLen",
-    // basicLength,
-    // "BLenMod",
-    // basicLengthMod,
-    // "HALF TUBE",
-    // tubeLength / 2,
-    "ROD PORT",
-    tubeLength / 2 - rodPort[2] * 1000,
-    "HEAD PORT:",
-    tubeLength / 2 + headPort[2] * 1000
-  );
+  // console.log(
+  //   "BORE",
+  //   bore,
+  //   // "PROFILE",
+  //   // profile,
+  //   "STROKE",
+  //   stroke,
+  //   "TUBE LENGTH",
+  //   tubeLength,
+  //   // "BLen",
+  //   // basicLength,
+  //   // "BLenMod",
+  //   // basicLengthMod,
+  //   // "HALF TUBE",
+  //   // tubeLength / 2,
+  //   "ROD PORT",
+  //   tubeLength / 2 - rodPort[2] * 1000,
+  //   "HEAD PORT:",
+  //   tubeLength / 2 + headPort[2] * 1000
+  // );
 
   const sectionCutter = new THREE.BoxGeometry(
     0.1,
@@ -170,7 +169,14 @@ const Experience = () => {
     //     <Port position={headPort} size={portSize} />
     //   </group>
     // </mesh>
-    <ActuatorBody profile={profile} tubeLength={tubeLength} />
+
+    <ActuatorBody
+      profile={profile}
+      tubeLength={tubeLength}
+      rodPortPosition={rodPort}
+      headPortPosition={headPort}
+      size={portSize}
+    />
   );
 };
 

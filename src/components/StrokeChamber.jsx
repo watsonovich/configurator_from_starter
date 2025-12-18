@@ -3,8 +3,8 @@ import { useCustomization } from "../contexts/Customization";
 import { Subtraction } from "@react-three/csg";
 
 export default function StrokeChamber() {
-  const { bore, setBore } = useCustomization();
-  const { stroke, setStroke } = useCustomization();
+  const { bore } = useCustomization();
+  const { stroke } = useCustomization();
 
   const rad = bore / 1000 / 2;
   const cutterShift = 2;
@@ -17,6 +17,12 @@ export default function StrokeChamber() {
       position-z={cutterShift / 2 / 1000}
     >
       <cylinderGeometry args={[rad, rad, length, 32, 1]} />
+      <meshStandardMaterial
+        color="goldenrod"
+        side={THREE.DoubleSide}
+        metalness={0.65}
+        roughness={0.2}
+      />
     </Subtraction>
   );
 }
