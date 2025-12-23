@@ -1,26 +1,35 @@
 import * as THREE from "three";
 import { Addition, Base, Geometry, Subtraction } from "@react-three/csg";
 import { portDims } from "../data/portDims";
+// import { useRef } from "react";
 
 export default function PortNew(props) {
+  console.log("rotation:", props.rotation);
+
   return (
-    <Subtraction showOperation={false} position={props.position}>
+    <Subtraction
+      showOperation={false}
+      position={props.position}
+      material={props.material}
+      rotation={props.rotation}
+    >
       <PortConstruction size={props.size} />
     </Subtraction>
   );
 }
 
 function PortConstruction(props) {
+  // const csgPort = useRef();
   console.log("port construction", props.size);
 
-  let size;
+  let size = props.size;
 
   if (props.size == "M3x0.5") {
-    size = "M3";
+    size = props.size;
   }
 
   if (props.size == "M5x0.8") {
-    size = "M5";
+    size = "m5";
   }
 
   if (props.size == "1/8") {
@@ -56,23 +65,23 @@ function PortConstruction(props) {
   const drillLength = selection.drillLength / 1000;
   const drillShift = drillLength / 2;
 
-  console.log(
-    "using vals:",
-    chamStartRad,
-    chamEndRad,
-    chamLength,
-    threadStartRad,
-    threadEndRad,
-    threadLength,
-    drillRadius,
-    drillLength
-  );
+  // console.log(
+  //   "using vals:",
+  //   chamStartRad,
+  //   chamEndRad,
+  //   chamLength,
+  //   threadStartRad,
+  //   threadEndRad,
+  //   threadLength,
+  //   drillRadius,
+  //   drillLength
+  // );
 
   const chamGeo = new THREE.CylinderGeometry(
     chamStartRad,
     chamEndRad,
     chamLength,
-    32,
+    24,
     1
   );
   const threadGeo = new THREE.CylinderGeometry(
@@ -93,9 +102,11 @@ function PortConstruction(props) {
 
   return (
     <Geometry>
-      <Base geometry={chamGeo} />
+      <Base geometry={drillGeo} position-y={-drillShift} />
       <Addition geometry={threadGeo} position-y={-threadShift} />
-      <Addition geometry={drillGeo} position-y={-drillShift} />
+      <Addition geometry={chamGeo} />
     </Geometry>
   );
 }
+
+// ref={csgPort}

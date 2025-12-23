@@ -4,8 +4,8 @@ const CustomizationContext = createContext({});
 
 export const CustomizationProvider = (props) => {
   const [magnet, setMagnet] = useState(false);
-  const [bore, setBore] = useState(32);
-  const [stroke, setStroke] = useState(40);
+  const [bore, setBore] = useState(25);
+  const [stroke, setStroke] = useState(25);
 
   return (
     <CustomizationContext.Provider

@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import { useCustomization } from "../contexts/Customization";
-import { Subtraction } from "@react-three/csg";
+import { Base, Geometry } from "@react-three/csg";
 
-export default function StrokeChamber(props) {
+export default function AddStrokeChamber(props) {
   const { bore } = useCustomization();
   const { stroke } = useCustomization();
 
@@ -11,13 +11,8 @@ export default function StrokeChamber(props) {
   const length = (stroke + 5 + cutterShift) / 1000;
 
   return (
-    <Subtraction
-      showOperation={false}
-      rotation-x={Math.PI / 2}
-      position-z={cutterShift / 2 / 1000}
-      material={props.material}
-    >
+    <Base position-z={cutterShift / 2 / 1000}>
       <cylinderGeometry args={[rad, rad, length, 32, 1]} />
-    </Subtraction>
+    </Base>
   );
 }

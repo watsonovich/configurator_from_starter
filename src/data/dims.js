@@ -51,6 +51,8 @@ export const tubeDimsCQ2 = {
       portAngleMod: 135,
       portSize: "M5x0.8",
       portSizeMod: "",
+      coreDiameter: 13,
+      coreOffset: 0.9,
     },
     16: {
       basicLength: 18.5,
@@ -64,6 +66,8 @@ export const tubeDimsCQ2 = {
       portAngleMod: 135,
       portSize: "M5x0.8",
       portSizeMod: "",
+      coreDiameter: 18,
+      coreOffset: 1.1,
     },
     20: {
       basicLength: 19.5,
@@ -77,6 +81,8 @@ export const tubeDimsCQ2 = {
       portAngleMod: 135,
       portSize: "M5x0.8",
       portSizeMod: "",
+      coreDiameter: 21,
+      coreOffset: 1.6,
     },
     25: {
       basicLength: 22.5,

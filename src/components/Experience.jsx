@@ -1,18 +1,9 @@
 /* eslint-disable no-unused-vars */
 
-import * as THREE from "three";
-import Tube from "./Tube";
 import { useCustomization } from "../contexts/Customization";
 import { tubeDimsCQ2 } from "../data/dims";
-import { Port } from "./Port";
-import { PortCutter } from "./PortCutter";
-import { Base, Geometry, Subtraction } from "@react-three/csg";
-import { useRef } from "react";
-import StrokeChamber from "./StrokeChamber";
-import RodCore from "./RodCore";
-import RodCoreGroove from "./RodCoreGroove";
-import PortNew from "./PortNew";
 import ActuatorBody from "./ActuatorBody";
+import Collar from "./Collar";
 
 const Experience = () => {
   const { magnet, setMagnet } = useCustomization();
@@ -39,7 +30,6 @@ const Experience = () => {
   let rodPort = "";
   let headPort = "";
   let rodPortAngle = 0;
-
   let headPortAngle = 0;
 
   // profile modifier logic
@@ -128,55 +118,18 @@ const Experience = () => {
   //   tubeLength / 2 + headPort[2] * 1000
   // );
 
-  const sectionCutter = new THREE.BoxGeometry(
-    0.1,
-    0.1,
-    tubeLength / 1000 + 0.01
-  );
-
-  const myAluminum = new THREE.MeshStandardMaterial({
-    color: "#d6d6d6",
-    metalness: 0.68,
-    roughness: 0.2,
-    transparent: false,
-    opacity: 0.5,
-  });
-
-  const sectionMaterial = new THREE.MeshStandardMaterial({
-    color: "red",
-    side: THREE.DoubleSide,
-    metalness: 0,
-    roughness: 0.2,
-  });
-
   return (
-    // <mesh receiveShadow castShadow>
-    //   <Geometry ref={csg} useGroups>
-    //     <Tube profile={profile} tubeLength={tubeLength} />
-    //     <PortNew locationRef={portSurfaceDistance} />
-    //     <StrokeChamber />
-    //     <RodCore tubeLength={tubeLength} />
-    //     <RodCoreGroove tubeLength={tubeLength} />
-    //     <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
-    //       <PortCutter position={rodPort} size={portSize} />
-    //     </group>
-    //     <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
-    //       <PortCutter position={headPort} size={portSize} />
-    //     </group>
-    //   </Geometry>
-    //   <group rotation-z={(-Math.PI / 180) * rodPortAngle}>
-    //     <Port position={rodPort} size={portSize} mat={myAluminum} />
-    //     <Port position={headPort} size={portSize} />
-    //   </group>
-    // </mesh>
-
-    <ActuatorBody
-      profile={profile}
-      tubeLength={tubeLength}
-      rodPortPosition={rodPort}
-      headPortPosition={headPort}
-      size={portSize}
-    />
+    <>
+      <ActuatorBody
+        profile={profile}
+        tubeLength={tubeLength}
+        rodPortPosition={rodPort}
+        headPortPosition={headPort}
+        size={portSize}
+        portAngle={rodPortAngle}
+      />
+      <Collar />
+    </>
   );
 };
 

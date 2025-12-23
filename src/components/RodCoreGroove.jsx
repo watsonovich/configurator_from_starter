@@ -6,21 +6,31 @@ export default function RodCoreGroove(props) {
   const { bore } = useCustomization();
   const { stroke } = useCustomization();
 
-  const rad = (bore + 3) / 1000 / 2;
+  let usableBore;
+  bore == "06"
+    ? (usableBore = 6)
+    : bore == "04"
+    ? (usableBore = 4)
+    : (usableBore = bore);
+
+  const rad = (usableBore + 3) / 1000 / 2;
   const chamberLength = (stroke + 5) / 1000;
   const halfChamber = chamberLength / 2;
   const halfTube = props.tubeLength / 1000 / 2;
   const halfZero = halfTube - halfChamber;
-  const length = 0.001;
-  const coreShift = halfTube + length / 2 - halfZero + 0.0025;
+  const length = 0.0011;
+  const coreShift = halfTube + length / 2 - 0.0019;
+
+  console.log(coreShift);
 
   return (
     <Subtraction
       showOperation={false}
       rotation-x={Math.PI / 2}
       position-z={coreShift}
+      material={props.material}
     >
-      <cylinderGeometry args={[rad, rad, length, 32, 1]} />
+      <cylinderGeometry args={[rad, rad, length, 64, 1]} />
     </Subtraction>
   );
 }
